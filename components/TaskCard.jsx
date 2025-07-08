@@ -1,17 +1,25 @@
+//import CheckBox from '@react-native-community/checkbox';
+import Checkbox from 'expo-checkbox';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function TaskCard({ title }) {
   const [isChecked, setIsChecked] = useState(false);
+console.log('CheckBox:', Checkbox);
 
   return (
     <View style={styles.card}>
-      <CheckBox
+      {/* <CheckBox
         value={isChecked}
         onValueChange={setIsChecked}
         tintColors={{ true: '#6C63FF', false: '#ccc' }}
-      />
+      /> */}
+      <Checkbox
+  value={isChecked}
+  onValueChange={setIsChecked}
+  color={isChecked ? '#6C63FF' : undefined}
+/>
+
       <Text style={[styles.title, isChecked && styles.strike]}>{title}</Text>
     </View>
   );

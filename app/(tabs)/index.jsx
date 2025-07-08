@@ -12,6 +12,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CategoryCard from '../../components/CategoryCard';
 import TaskCard from '../../components/TaskCard';
 import AddTaskModal from '../../components/AddTaskModal';
+import { useRouter } from 'expo-router';
+// inside component:
+const router = useRouter();
 
 export default function HomeScreen() {
   const [tasks, setTasks] = useState([]);
@@ -77,13 +80,15 @@ const addCategory = () => {
 
       <View style={styles.categoryContainer}>
   {categories.map((cat, idx) => (
-    <CategoryCard
-      key={idx}
-      title={cat.title}
-      initialColor={cat.color}
-      taskCount={3}
-    />
-  ))}
+  <CategoryCard
+    key={idx}
+    title={cat.title}
+    initialColor={cat.color}
+    taskCount={0} // Default for now
+    onPress={() => router.push(`/task/${cat.title}`)}
+  />
+))}
+
 </View>
 
 <TouchableOpacity onPress={addCategory}>
