@@ -11,7 +11,7 @@ export default function TaskScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.heading}>{category} Tasks</Text>
-
+      {/* comment add */}
       {tasks.length === 0 ? (
         <Text style={styles.empty}>No tasks added yet!</Text>
       ) : (
